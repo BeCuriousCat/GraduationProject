@@ -1,16 +1,15 @@
-#coding utf-8
-
+#!/usr/bin/python3.5
 import jieba 
 
-fin = open('../corpus/The_three_body.txt'.'r')
+fin = open('../corpus/The_three_body.txt','r')
 fou = open('../corpus/The_three_body_seg.txt','w')
 
-lin = fin.readline()
+line = fin.readline()
 while line:
-	newline = jieba.cut(line,cut_all=False) #精簡模式
-	str_out = ' '.jion(newline).encode('utf-8')
-	print srt_out,
-	print >> fou,str_out,
+	newline = jieba.cut(line,cut_all=False) 
+	str_out = " ".join(newline)
+	print(str_out),
+	print(str_out,file=fou),		
 	line = fin.readline()
 
 fin.close()
