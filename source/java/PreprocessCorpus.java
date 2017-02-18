@@ -1,29 +1,27 @@
-package com.process;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.math.MathContext;
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PreprocessCorpus {
-	public static void main(String[] args) {
+	private static String[] clabels = {"，","！","；","：","（","）","——","……","—","·","《","》","。","、","“","”","‘","’",};
+	
+	private static String[] elabels = {",","!",";",":","(",")"};
+
+/*	public static void main(String[] args) {
 		PreprocessCorpus p = new PreprocessCorpus();
 		p.process("G:/Myeclipse10.0/Graduate/src/source/a.txt");
-	}
+	}*/
 
 	/**
-	 * ��ȡԭʼ���Ͽⰴ��ָ��ã����Ӻͱ����ı�
+	 * 处理文件得到：句子和标点的ｔｘｔ文本
 	 * 
 	 * @param fName
 	 */
@@ -31,10 +29,15 @@ public class PreprocessCorpus {
 		BufferedReader bf = null;
 		BufferedWriter fox = null;
 		BufferedWriter foy = null;
-
+		
+		HashSet<String> hs = new HashSet<String>();
+		for (int i = 0; i < clabels.length; i++) {
+			hs.add(clabels[i]);
+		}
+		
 		String fName = fPath.substring(fPath.lastIndexOf('/')+1,fPath.length()-4);
 		String path = fPath.substring(0, fPath.lastIndexOf('/')+1);
-		System.out.println(fName+" "+path);
+//		System.out.println(fName+" "+path);
 		Pattern pattern = Pattern.compile("(.+?)(\\p{P})+"	);
 
 		try {
@@ -46,16 +49,19 @@ public class PreprocessCorpus {
 			
 			String line = bf.readLine();
 			while (line != null) {
-
-				Matcher matcher = pattern.matcher(line);
-
+				//如果句子为空，弃用
+				//除去两边的空格
+				Matcher matcher = pattern.matcher(line.trim());
 				boolean t = matcher.find();
-				// System.out.println(t+line);
+				//System.out.println(t+line);
 				while (t) {
-					fox.write(matcher.group(1));
-					fox.newLine();
-					foy.write(matcher.group(2));
-					foy.newLine();
+					//如果标点不在常用中文标点中，则弃用
+				if(hs.contains(matcher.group(2)) && !matcher.group(1).matches("\\s")){
+						fox.write(matcher.group(1));
+						fox.newLine();
+						foy.write(matcher.group(2));
+						foy.newLine();
+					}
 					t = matcher.find();
 				}
 
@@ -73,6 +79,43 @@ public class PreprocessCorpus {
 				e.printStackTrace();
 			}
 		}
+	}
 
+	/**
+	 * 将 英文标点替换成中文标点
+	 * @param fPath
+	 */
+	public void replace(String fPath){
+		BufferedReader bf = null;
+		BufferedWriter bw = null;
+		
+		String fName = fPath.substring(fPath.lastIndexOf('/')+1,fPath.length()-4);
+		String path = fPath.substring(0, fPath.lastIndexOf('/')+1);
+				
+		try {
+			bf = new BufferedReader(new FileReader(fPath));
+			bw = new BufferedWriter(new FileWriter(path+fName+"_replace"+".txt"));
+			String line = bf.readLine();
+			while(line != null){
+				System.out.println(line);
+				for (int i = 0; i < elabels.length; i++) {
+					line = line.replace(elabels[i], clabels[i]);
+				}
+	//			System.out.println(line);
+				bw.write(line);
+				bw.newLine();
+				line = bf.readLine();
+			}
+		} catch (Exception e) {
+			System.out.println("translate English punctation to chinese error!");
+			e.printStackTrace();
+		}finally{
+			try {
+				bf.close();
+				bw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

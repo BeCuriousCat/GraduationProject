@@ -1,7 +1,7 @@
 #!/usr/bin/python3.5
 import jieba 
 
-fin = open('../corpus/The_three_body.txt','r')
+fin = open('../corpus/The_three_body_x.txt','r')
 fou = open('../corpus/The_three_body_seg.txt','w')
 
 line = fin.readline()

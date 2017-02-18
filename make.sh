@@ -1,3 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-javac -d 
+
+javac -d ./bin -sourcepath source/java  ./source/java/Main.java
