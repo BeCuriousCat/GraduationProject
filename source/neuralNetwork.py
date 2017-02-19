@@ -8,25 +8,25 @@ from keras.models import Sequential
 from keras.layers import Dense,Activation,Embedding
 from keras.layers import LSTM
 
-
+	
 max_features = 20000
 maxlen = 80  # cut texts after this number of words (among top max_features most common words)
 batch_size = 32
+path = "/home/chenzewei/GraduationProject/corpus/"
 
 print('Loading data...')
 #导入数据
-t = open("/home/chenzewei/GraduationProject/corpus/The_three_body_replace_y.txt")
-alltxt = t.read();
-print(alltxt)
-y = text.one_hot(alltxt,44,lower=True,filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n"',split=" ")
-X_train = open("/home/chenzewei/GraduationProject/corpus/The_three_body_replace_x.txt").read()
-#X_train = text.text_to_word_sequence(X_train,lower=True, split=" ")
-X_train = text.one_hot(X_train,32000,lower=True,split=" ")
+t = open(path+"The_three_body_replace_y.txt")
+alltxt = t.read()
+y = text.one_hot(alltxt,44,lower=True,filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n',split=" ")
+X_train = open(path+"The_three_body_replace_x.txt").read()
+X_train = text.text_to_word_sequence(X_train,lower=True, split=" ")
+#X_train = text.text_to_word_sequence(X_train,32000,filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n',lower=True)
 file = open('/home/chenzewei/tmp_X.txt','w')
 print(X_train,file=file)
 file.close()
 y_train = y
-print(y)
+print(X_train)
 print(len(X_train)," ",len(y))
 print(len(X_train), 'train sequences')
 # print('Pad sequences (samples x time)')

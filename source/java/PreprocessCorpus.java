@@ -11,34 +11,41 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PreprocessCorpus {
-	private static String[] clabels = {"，","！","；","：","（","）","——","……","—","·","《","》","。","、","“","”","‘","’",};
+	private static String[] clabels = {"，","！","；","："
+		,"（","）","——","……","—","·","《","》","。","、","“","”","‘","’",};
+	private static String[] elabels = {",","!",";",":"
+		,"(",")"};
 	
-	private static String[] elabels = {",","!",";",":","(",")"};
-
+	private static BufferedReader bf = null;
+	private static BufferedWriter fox = null;
+	private static BufferedWriter foy = null;
+	private static BufferedWriter bw = null;
+	private static String fName;
+	private static String path;
+	
 /*	public static void main(String[] args) {
 		PreprocessCorpus p = new PreprocessCorpus();
 		p.process("G:/Myeclipse10.0/Graduate/src/source/a.txt");
 	}*/
 
 	/**
-	 * 处理文件得到：句子和标点的ｔｘｔ文本
-	 * 
+	 * 读取原始语料库按句分割获得：句子和标点的文本
+	 * 暂时不考虑！”连用的情况只取！
+	 * 有进一步改成标点结合的想法
 	 * @param fName
 	 */
 	public void process(String fPath) {
-		BufferedReader bf = null;
-		BufferedWriter fox = null;
-		BufferedWriter foy = null;
+
 		
 		HashSet<String> hs = new HashSet<String>();
 		for (int i = 0; i < clabels.length; i++) {
 			hs.add(clabels[i]);
 		}
 		
-		String fName = fPath.substring(fPath.lastIndexOf('/')+1,fPath.length()-4);
-		String path = fPath.substring(0, fPath.lastIndexOf('/')+1);
-//		System.out.println(fName+" "+path);
-		Pattern pattern = Pattern.compile("(.+?)(\\p{P})+"	);
+		getPathName(fPath);
+		
+		System.out.println(fName+" "+path);
+		Pattern pattern = Pattern.compile("([^　 \\p{P}]+?)(\\p{P})");
 
 		try {
 			InputStream f = new FileInputStream(fPath);
@@ -49,15 +56,18 @@ public class PreprocessCorpus {
 			
 			String line = bf.readLine();
 			while (line != null) {
-				//如果句子为空，弃用
 				//除去两边的空格
 				Matcher matcher = pattern.matcher(line.trim());
 				boolean t = matcher.find();
 				//System.out.println(t+line);
 				while (t) {
+					
+					
+					//#如果句子为空，弃用
 					//如果标点不在常用中文标点中，则弃用
-				if(hs.contains(matcher.group(2)) && !matcher.group(1).matches("\\s")){
+					if(hs.contains(matcher.group(2))){
 						fox.write(matcher.group(1));
+						System.out.println(matcher.group(1)+" "+matcher.groupCount()+matcher.group(2));
 						fox.newLine();
 						foy.write(matcher.group(2));
 						foy.newLine();
@@ -81,16 +91,15 @@ public class PreprocessCorpus {
 		}
 	}
 
+
 	/**
-	 * 将 英文标点替换成中文标点
+	 * 去除空白行并将 英文标点替换成中文标点
 	 * @param fPath
 	 */
 	public void replace(String fPath){
-		BufferedReader bf = null;
-		BufferedWriter bw = null;
 		
-		String fName = fPath.substring(fPath.lastIndexOf('/')+1,fPath.length()-4);
-		String path = fPath.substring(0, fPath.lastIndexOf('/')+1);
+		
+		getPathName(fPath);
 				
 		try {
 			bf = new BufferedReader(new FileReader(fPath));
@@ -101,7 +110,7 @@ public class PreprocessCorpus {
 				for (int i = 0; i < elabels.length; i++) {
 					line = line.replace(elabels[i], clabels[i]);
 				}
-	//			System.out.println(line);
+				//System.out.println(line);
 				bw.write(line);
 				bw.newLine();
 				line = bf.readLine();
@@ -117,5 +126,13 @@ public class PreprocessCorpus {
 				e.printStackTrace();
 			}
 		}
+	}
+	/**
+	 * 通过fPath获得Path和FileName
+	 * @param fPath
+	 */
+	private void getPathName(String fPath) {
+		fName = fPath.substring(fPath.lastIndexOf('/')+1,fPath.length()-4);
+		path = fPath.substring(0, fPath.lastIndexOf('/')+1);
 	}
 }
