@@ -103,7 +103,7 @@ public class PreprocessCorpus {
 				
 		try {
 			bf = new BufferedReader(new FileReader(fPath));
-			bw = new BufferedWriter(new FileWriter(path+fName+"_replace"+".txt"));
+			bw = new BufferedWriter(new FileWriter(path+fName+"_replace.txt"));
 			String line = bf.readLine();
 			while(line != null){
 				System.out.println(line);

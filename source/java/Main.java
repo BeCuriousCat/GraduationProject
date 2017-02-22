@@ -3,9 +3,12 @@ import java.util.regex.Pattern;
 public class Main {
 	public static void main(String[] args) {
 		PreprocessCorpus pc = new PreprocessCorpus();
-		String fPath = "/home/chenzewei/GraduationProject/corpus/The_three_body.txt";
+		String path = "/home/chenzewei/GraduationProject/corpus/";
+		String name = "The_three_body";
+		String fPath = path+name+".txt";
 		if (args.length >= 1) {
-			fPath = args[0];
+			name = args[0];
+			fPath = path + name +".txt";
 		}
 
 		if(fPath == null || fPath.length() == 0) {
@@ -13,7 +16,7 @@ public class Main {
 		}
 		else{
 			pc.replace(fPath);
-			fPath = "/home/chenzewei/GraduationProject/corpus/The_three_body_replace.txt";
+			fPath = path+name+"_replace.txt";
 			pc.process(fPath);
 		}
 

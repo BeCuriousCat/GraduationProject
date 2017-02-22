@@ -1,8 +1,10 @@
-T#!/usr/bin/python3.5
+#!/usr/bin/python3.5
 import re
 import sys
 
-file = "/home/chenzewei/GraduationProject/corpus/The_three_body_replace_y.txt";
+path = "/home/chenzewei/GraduationProject/corpus/";
+name = "test_seg"
+file = path+name+".txt"
 if len(sys.argv) >= 2:
 	file = argv[1]
 	print("update the soruce file!")

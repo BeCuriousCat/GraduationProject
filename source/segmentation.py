@@ -1,9 +1,9 @@
 #!/usr/bin/python3.5
 import jieba 
 
-
-fin = open('../corpus/The_three_body_replace_x.txt','r')
-fou = open('../corpus/The_three_body_seg.txt','w')
+name = "test"
+fin = open('../corpus/'+name+'_replace_x.txt','r')
+fou = open('../corpus/'+name+'_seg.txt','w')
 
 line = fin.readline()
 while line:
