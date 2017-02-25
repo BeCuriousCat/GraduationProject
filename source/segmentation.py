@@ -1,7 +1,13 @@
 #!/usr/bin/python3.5
-import jieba 
+import jieba
+import sys
 
 name = "test"
+if len(sys.argv) >= 2:
+	name = sys.argv[1]
+
+print("segment the file :"+name)
+
 fin = open('../corpus/'+name+'_replace_x.txt','r')
 fou = open('../corpus/'+name+'_seg.txt','w')
 
