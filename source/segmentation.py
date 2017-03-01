@@ -2,14 +2,16 @@
 import jieba
 import sys
 
+path = "../corpus/"
 name = "test"
 if len(sys.argv) >= 2:
 	name = sys.argv[1]
+	path = sys.argv[2]
 
 print("segment the file :"+name)
 
-fin = open('../corpus/'+name+'_replace_x.txt','r')
-fou = open('../corpus/'+name+'_seg.txt','w')
+fin = open(path+name+"X.txt",'r')
+fou = open(path+name+'_seg.txt','w')
 
 line = fin.readline()
 while line:
