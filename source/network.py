@@ -73,13 +73,15 @@ model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=15)
 for i in range(0, len(files)):
 	print(y_target[i],"检测结果")
 	score, acc = model.evaluate(x_test[i], y_test[i],batch_size=batch_size)
+	print('Test score:', score)
+	print('Test accuracy:', acc)
 
-print('Test score:', score)
-print('Test accuracy:', acc)
+filepath = "/home/chenzewei/GraduationProject/tmp/weight.h5"
+model.save_weights(filepath)
 
-
-weights = model.get_weights()
-np.savetxt(path+"weight.txt",weights)
+json_string = model.to_json() 
+json = open(path+'json.txt','w')
+print(json_string,file=json)
 
 #。，。？！……
 in_test = ["这是 我 心里 最好的 一版 一吻定情",

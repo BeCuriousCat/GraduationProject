@@ -4,34 +4,6 @@
 		"selected_items":
 		[
 			[
-				"root",
-				"rootdir"
-			],
-			[
-				"c",
-				"corpus\t(getCorpus.py)"
-			],
-			[
-				"file",
-				"filenames"
-			],
-			[
-				"dir",
-				"dirnames"
-			],
-			[
-				"r",
-				"rootdir"
-			],
-			[
-				"d",
-				"defs\tMethod"
-			],
-			[
-				"so",
-				"soruce\t(wordCount.py)"
-			],
-			[
 				"on",
 				"one_hot.one_hot"
 			],
@@ -87,26 +59,16 @@
 			"file": "source/network.py",
 			"settings":
 			{
-				"buffer_size": 2210,
-				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "#!/usr/bin/python3.5"
-			}
-		},
-		{
-			"file": "util/getCorpus.py",
-			"settings":
-			{
-				"buffer_size": 926,
+				"buffer_size": 2767,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "source/segmentation.py",
+			"file": "util/wordCount.py",
 			"settings":
 			{
-				"buffer_size": 496,
+				"buffer_size": 605,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -123,10 +85,6 @@
 		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"",
-				"AutoFileName: Quick Settings"
-			],
 			[
 				"git",
 				"Git: Toggle Annotations"
@@ -223,34 +181,21 @@
 	"expanded_folders":
 	[
 		"/home/chenzewei/GraduationProject",
-		"/home/chenzewei/GraduationProject/corpus/test",
+		"/home/chenzewei/GraduationProject/corpus",
 		"/home/chenzewei/GraduationProject/source",
 		"/home/chenzewei/GraduationProject/tmp",
-		"/home/chenzewei/GraduationProject/util/__pycache__"
+		"/home/chenzewei/GraduationProject/util"
 	],
 	"file_history":
 	[
-		"/home/chenzewei/GraduationProject/classCorpus.sh",
-		"/home/chenzewei/GraduationProject/.gitignore",
-		"/home/chenzewei/GraduationProject/tmp/testX.txt",
-		"/home/chenzewei/GraduationProject/util/getCorpus.py",
-		"/home/chenzewei/GraduationProject/tmp/classCorpusX.txt",
-		"/home/chenzewei/GraduationProject/tmp/classCorpusY.txt",
-		"/home/chenzewei/GraduationProject/corpus/classes/corpus_，.txt",
-		"/home/chenzewei/GraduationProject/corpus/classes/corpus_？.txt",
-		"/home/chenzewei/GraduationProject/corpus/classes/corpus_…….txt",
-		"/home/chenzewei/GraduationProject/corpus/classes/corpus_。.txt",
-		"/home/chenzewei/GraduationProject/source/java/PreprocessCorpus.java",
 		"/home/chenzewei/GraduationProject/source/neuralNetwork.py",
-		"/home/chenzewei/GraduationProject/spider.py",
-		"/home/chenzewei/GraduationProject/crawler.py",
-		"/home/chenzewei/GraduationProject/tmp/X_sequence2.txt",
 		"/home/chenzewei/GraduationProject/source/segmentation.py",
-		"/home/chenzewei/GraduationProject/run.sh",
 		"/home/chenzewei/GraduationProject/util/wordCount.py",
-		"/home/chenzewei/GraduationProject/tmp/Y_sequence.txt",
+		"/home/chenzewei/GraduationProject/tmp/X_sequence2.txt",
+		"/home/chenzewei/GraduationProject/source/java/PreprocessCorpus.java",
 		"/home/chenzewei/GraduationProject/source/java/Main.java",
 		"/home/chenzewei/GraduationProject/corpus/test.txt",
+		"/home/chenzewei/GraduationProject/run.sh",
 		"/home/chenzewei/GraduationProject/make.sh",
 		"/home/chenzewei/GraduationProject/tmp/X_sequence.txt",
 		"/home/chenzewei/GraduationProject/util/one_hot.py",
@@ -311,9 +256,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"([\\w]*)\\[([，。！；：？]|[…]+)\\]",
-			"([\\w]*)\\[([，。！；：？…])\\]",
-			"utf",
 			"[\\[(\\d* ){5,}(\\d*)\\]]",
 			"[^\\[(\\d* ){5,}(\\d*)\\]]",
 			"，",
@@ -366,31 +308,19 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2210,
+						"buffer_size": 2767,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2128,
-								2128
+								544,
+								544
 							]
 						],
 						"settings":
 						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"auto_name": "#!/usr/bin/python3.5",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -398,15 +328,15 @@
 								{
 									"1":
 									[
-										2127,
-										2128
+										543,
+										544
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"Packages/BracketHighlighter/icons/double_quote.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -414,8 +344,8 @@
 								{
 									"1":
 									[
-										2085,
-										2086
+										527,
+										528
 									]
 								},
 								"unmatched":
@@ -424,21 +354,31 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -449,41 +389,32 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_tag_content"
 							],
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 627.0,
+						"translation.y": 912.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -491,19 +422,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "util/getCorpus.py",
+					"file": "util/wordCount.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 926,
+						"buffer_size": 605,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								595,
-								595
+								111,
+								111
 							]
 						],
 						"settings":
@@ -524,12 +455,27 @@
 							{
 								"close":
 								{
+									"1":
+									[
+										111,
+										112
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										102,
+										103
+									]
 								},
 								"unmatched":
 								{
@@ -537,62 +483,64 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
 							],
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -601,135 +549,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "source/segmentation.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 496,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								496,
-								496
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										495,
-										496
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										494,
-										495
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content"
-							],
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
