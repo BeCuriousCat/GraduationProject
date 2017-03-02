@@ -22,7 +22,7 @@ xfile = path+"classes_seg.txt"
 yfile = path+"classesY.txt"
 
 X_train = one_hot.one_hot(xfile,n=32000,maxlen=maxlen,split = " ")
-y_train = one_hot.one_hot(yfile,n=7,maxlen=maxlen,split = " ")
+y_train = one_hot.replace(yfile)
 
 files = ["test","test2","test3","test4","test5","test6","test7"]
 y_target = ["综合","，","：","；","！","……","。","？"] 
@@ -34,7 +34,7 @@ for i in range(0, len(files)):
 	x_t.append(path+files[i]+"_seg.txt")
 	y_t.append(path+files[i]+"Y.txt")
 	x_test.append(one_hot.one_hot(x_t[i],n=32000,maxlen=maxlen,split = " "))
-	y_test.append(one_hot.one_hot(y_t[i],n=7,maxlen=maxlen,split = " "))
+	y_test.append(one_hot.replace(y_t[i]))
 
 
 # X_test = one_hot.one_hot(xtest,n=32000,maxlen=maxlen,split = " ")
