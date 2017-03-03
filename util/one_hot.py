@@ -11,3 +11,15 @@ def one_hot(fName,n,maxlen,split=" "):
 
 	return seq
 
+def replace(fName):
+	fin = open(fName,'r')
+	seq = []
+	line = fin.readline()
+	a = ['，','。','？','！','：','；','…']
+	while line:
+		line = line.strip(' \n')
+		intege = a.index(line[0])
+		seq.append(intege)
+		line = fin.readline()
+
+	return seq
