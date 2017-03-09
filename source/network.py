@@ -1,12 +1,12 @@
 #!/usr/bin/python3.5
 #coding=utf-8
+from __future__ import absolute_import 
+from __future__ import print_function
 import numpy as np
 import sys
 sys.path.append("..")
 np.random.seed(1337)
 
-from __future__ import absolute_import 
-from __future__ import print_function
 from keras.preprocessing import sequence,text
 from keras.models import Sequential
 from keras.layers import Dense,Activation,Embedding
