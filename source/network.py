@@ -1,5 +1,5 @@
 #!/usr/bin/python3.5
-#codeing utf-8
+#coding=utf-8
 import numpy as np
 import sys
 sys.path.append("..")
@@ -10,6 +10,7 @@ from keras.models import Sequential
 from keras.layers import Dense,Activation,Embedding
 from keras.layers import LSTM
 from util import one_hot
+from keras.utils.visualize_util import plot
 	
 max_features = 120000
 maxlen = 15  # cut texts after this number of words (among top max_features most common words)
@@ -66,10 +67,10 @@ model.add(Activation('softmax'))
 model.compile(loss='sparse_categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
-
+plot(model, to_file='first_model1.png', show_shapes=True)
 print('Train...')
-model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=15)
-
+model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=15,verbose=1)
+plot(model, to_file='first_model.png', show_shapes=True)
 for i in range(0, len(files)):
 	print(y_target[i],"检测结果")
 	score, acc = model.evaluate(x_test[i], y_test[i],batch_size=batch_size)
@@ -83,14 +84,11 @@ json_string = model.to_json()
 json = open(path+'json.txt','w')
 print(json_string,file=json)
 
+
+predict = model.predict_classes(in_test, batch_size=32, verbose=1)
+print(predict)
 #。，。？！……
-in_test = ["这是 我 心里 最好的 一版 一吻定情",
-			"嗯",
-			"没有 之一",
-			"怎么样 了",
-			"你 真棒",
-			"等等"
-			]
-in_test = one_hot.one_hot(in_test,n=32000,maxlen=maxlen,split = " ")
+t = path+"in_test.txt"
+in_test = one_hot.one_hot(t,n=32000,maxlen=maxlen,split = " ")
 predict = model.predict_classes(in_test, batch_size=32, verbose=1)
 print(predict)
