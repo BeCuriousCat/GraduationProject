@@ -5,6 +5,8 @@ import sys
 sys.path.append("..")
 np.random.seed(1337)
 
+from __future__ import absolute_import 
+from __future__ import print_function
 from keras.preprocessing import sequence,text
 from keras.models import Sequential
 from keras.layers import Dense,Activation,Embedding
@@ -22,7 +24,7 @@ print('Loading data...')
 xfile = path+"classes_seg.txt"
 yfile = path+"classesY.txt"
 
-X_train = one_hot.one_hot(xfile,n=32000,maxlen=maxlen,split = " ")
+X_train = one_hot.one_hot(xfile,n=40000,maxlen=maxlen,split = " ")
 y_train = one_hot.replace(yfile)
 
 files = ["test","test2","test3","test4","test5","test6","test7"]
@@ -34,7 +36,7 @@ y_test = []
 for i in range(0, len(files)):
 	x_t.append(path+files[i]+"_seg.txt")
 	y_t.append(path+files[i]+"Y.txt")
-	x_test.append(one_hot.one_hot(x_t[i],n=32000,maxlen=maxlen,split = " "))
+	x_test.append(one_hot.one_hot(x_t[i],n=40000,maxlen=maxlen,split = " "))
 	y_test.append(one_hot.replace(y_t[i]))
 
 

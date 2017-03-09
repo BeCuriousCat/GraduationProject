@@ -8,7 +8,6 @@ def one_hot(fName,n,maxlen,split=" "):
 		intege = [(abs(hash(w)) % (n - 1) + 1) for w in line]
 		seq.append(intege)
 		line = fin.readline()
-
 	return seq
 
 def replace(fName):
@@ -21,5 +20,4 @@ def replace(fName):
 		intege = a.index(line[0])
 		seq.append(intege)
 		line = fin.readline()
-
 	return seq
