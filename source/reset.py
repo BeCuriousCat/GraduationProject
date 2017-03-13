@@ -27,6 +27,3 @@ print(predict)
 
 x_test = one_hot.one_hot(path+"test2_seg.txt",n=32000,maxlen=maxlen,split = " ")
 y_test = one_hot.replace(path+"test2Y.txt")
-score, acc = model.evaluate(x_test, y_test,batch_size=32)
-print('Test score:', score)
-print('Test accuracy:', acc)
