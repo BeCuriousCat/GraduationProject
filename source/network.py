@@ -13,11 +13,12 @@ from keras.layers import Dense,Activation,Embedding
 from keras.layers import LSTM
 from util import one_hot
 from keras.utils.visualize_util import plot
-	
-max_features = 120000
-maxlen = 15  # cut texts after this number of words (among top max_features most common words)
-batch_size = 32
+#需要修改
 path = "/home/chenzewei/GraduationProject/tmp/"
+
+max_features = 120000
+maxlen = 10  # cut texts after this number of words (among top max_features most common words)
+batch_size = 32
 
 print('Loading data...')
 #导入数据
@@ -27,8 +28,8 @@ yfile = path+"classesY.txt"
 X_train = one_hot.one_hot(xfile,n=40000,maxlen=maxlen,split = " ")
 y_train = one_hot.replace(yfile)
 
-files = ["test","test2","test3","test4","test5","test6","test7"]
-y_target = ["综合","，","：","；","！","……","。","？"] 
+files = ["test","test2","test3","test4","test5"]
+y_target = ["综合","，","！","。","？"]
 x_t = []
 y_t = []
 x_test = []
@@ -62,35 +63,29 @@ print('Build model...')
 model = Sequential()
 model.add(Embedding(max_features, 128, dropout=0.2))
 model.add(LSTM(128, dropout_W=0.2, dropout_U=0.2))  # try using a GRU instead, for fun
-model.add(Dense(7))
+model.add(Dense(4))
 model.add(Activation('softmax'))
 
 # try using different optimizers and different optimizer configs
 model.compile(loss='sparse_categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
-plot(model, to_file='first_model1.png', show_shapes=True)
+
 print('Train...')
 model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=15,verbose=1)
-plot(model, to_file='first_model.png', show_shapes=True)
+
 for i in range(0, len(files)):
 	print(y_target[i],"检测结果")
 	score, acc = model.evaluate(x_test[i], y_test[i],batch_size=batch_size)
 	print('Test score:', score)
 	print('Test accuracy:', acc)
 
-filepath = "/home/chenzewei/GraduationProject/tmp/weight.h5"
+filepath = "../weight/weight.h5"
 model.save_weights(filepath)
 
 json_string = model.to_json() 
 json = open(path+'json.txt','w')
 print(json_string,file=json)
 
-
-predict = model.predict_classes(in_test, batch_size=32, verbose=1)
-print(predict)
-#。，。？！……
-t = path+"in_test.txt"
-in_test = one_hot.one_hot(t,n=32000,maxlen=maxlen,split = " ")
-predict = model.predict_classes(in_test, batch_size=32, verbose=1)
+predict = model.predict_classes("../tmp/test2_seg.txt", batch_size=32, verbose=1)
 print(predict)
