@@ -14,7 +14,7 @@ from keras.layers import LSTM
 from util import one_hot
 
 #需要修改
-path = "/home/chenzewei/GraduationProject/tmp/"
+path = "/home/ccit/chenzewei/GraduationProject/tmp/"
 
 max_features = 120000
 maxlen = 10  # cut texts after this number of words (among top max_features most common words)
@@ -26,6 +26,7 @@ xfile = path+"classes_seg.txt"
 yfile = path+"classesY.txt"
 
 X_train = one_hot.one_hot(xfile,n=114120,maxlen=maxlen,split = " ")
+
 y_train = one_hot.replace(yfile)
 
 files = ["test","test2","test3","test4","test5"]
@@ -80,12 +81,13 @@ for i in range(0, len(files)):
 	print('Test score:', score)
 	print('Test accuracy:', acc)
 
-filepath = "../weight/weight.h5"
+filepath = "/home/ccit/chenzewei/GraduationProject/weight/weight.h5"
 model.save_weights(filepath)
 
 json_string = model.to_json() 
 json = open(path+'json.txt','w')
 print(json_string,file=json)
 
-predict = model.predict_classes("../tmp/test2_seg.txt", batch_size=32, verbose=1)
+prenb = one_hot.one_hot(path+"test2_seg.txt",n=114120,maxlen=maxlen,split = " "))
+predict = model.predict_classes(prend, batch_size=32, verbose=1)
 print(predict)
