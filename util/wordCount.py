@@ -2,8 +2,8 @@
 import re
 import sys
 
-path = "/home/chenzewei/GraduationProject/corpus/";
-name = "test_seg"
+path = "/home/chenzewei/GraduationProject/tmp/";
+name = "classes_seg"
 file = path+name+".txt"
 if len(sys.argv) >= 2:
 	file = argv[1]
@@ -20,7 +20,6 @@ while line:
 		wdn += 1
 		if x in d:
 			d[x] += 1
-
 		else:
 			d[x]  = 1
 			count  += 1
@@ -32,5 +31,5 @@ acnt = 0
 for i in d:
 	acnt += d[i]
 print("all_plus = ",acnt)
-print(d)
+
 f.close()
