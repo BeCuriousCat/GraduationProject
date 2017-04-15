@@ -18,7 +18,7 @@ while line:
 	newline = jieba.cut(line,cut_all=False) 
 	str_out = " ".join(newline)
 	str_out = str_out.replace(r"\n","")
-	print(str_out,end=""),
+	#print(str_out,end=""),
 	print(str_out,file=fou,end=""),
 	line = fin.readline()
 
