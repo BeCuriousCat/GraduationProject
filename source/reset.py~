@@ -1,3 +1,4 @@
+#coding=utf-8
 import numpy as np
 import sys
 sys.path.append("..")
@@ -10,15 +11,28 @@ from keras.layers import LSTM
 from util import one_hot
 from keras.models import model_from_json  
 
+<<<<<<< HEAD
 path = "/home/ccit/chenzewei/GraduationProject/tmp/"
 fin = open(path+"json.txt")
 json_string = fin.read()
 model = model_from_json(json_string)  
 model.load_weights('/home/ccit/chenzewei/GraduationProject/weight/weight.h5') 
 maxlen = 10 
-Line = 
 in_test = one_hot.one_hot4Line(,n=114120,maxlen=maxlen,split = " ")
 
+=======
+path = "/home/chenzewei/GraduationProject/tmp/"
+fin = open(path+"json.txt")
+json_string = fin.read()
+model = model_from_json(json_string)  
+
+model.load_weights('/home/chenzewei/GraduationProject/weight/weight.h5') 
+
+maxlen = 10 
+
+in_test = one_hot.one_hot(path+"predict.txt",n=114120,maxlen=maxlen,split = " ")
+print("[，= 0] [。= 1] [？= 2] [！= 3] ")
+>>>>>>> b8b5aa68136f11a00542f49dd184f8e6d1f891be
 in_test = sequence.pad_sequences(in_test,maxlen=10) 
 predict = model.predict_classes(in_test, batch_size=32, verbose=1)
 print predict

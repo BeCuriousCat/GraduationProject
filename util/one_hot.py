@@ -33,3 +33,4 @@ def one_hot4Line(array,n,maxlen,split=" "):
 		seq.append(intege)
 	return seq
 	
+
