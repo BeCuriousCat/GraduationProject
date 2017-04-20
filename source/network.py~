@@ -94,6 +94,6 @@ json_string = model.to_json()
 json = open(path+'json.txt','w')
 print(json_string,file=json)
 
-prend = one_hot.one_hot(path+"test2_seg.txt",n=wordcnt,maxlen=maxlen,split = " "))
+prend = one_hot.one_hot(path+"test2_seg.txt",n=wordcnt,maxlen=maxlen,split = " ")
 predict = model.predict_classes(prend, batch_size=32, verbose=1)
 print(predict)

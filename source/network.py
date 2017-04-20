@@ -81,14 +81,17 @@ model.compile(loss='sparse_categorical_crossentropy',
 print('Train...')
 model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=15,verbose=1)
 
+print("save the weight")
+filepath = "../weight/weight.h5"
+model.save_weights(filepath)
+
 for i in range(0, len(files)):
 	print(y_target[i],"检测结果")
 	score, acc = model.evaluate(x_test[i], y_test[i],batch_size=batch_size)
 	print('Test score:', score)
 	print('Test accuracy:', acc)
 
-filepath = "../weight/weight.h5"
-model.save_weights(filepath)
+
 
 json_string = model.to_json() 
 json = open(path+'json.txt','w')
