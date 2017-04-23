@@ -24,3 +24,11 @@ def replace(fName):
 		seq.append(intege)
 		line = fin.readline()
 	return seq
+
+def one_hot4Line(array,n,maxlen,split=" "):
+	seq = []
+	for line in array:
+		line = line.strip(' \n').split(split)
+		intege = [(abs(hash(w)) % (n - 1) + 1) for w in line]
+		seq.append(intege)
+	return seq

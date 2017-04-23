@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3
 #coding=utf-8
 import os
 import os.path
@@ -40,7 +40,7 @@ for root,dirnames,filenames in os.walk(rootdir):
 		print(file)
 		f = open(root+"/"+file,'r')
 		txt = f.read()
-		list = re.findall(r"([\w，、\"\"：]*)\[([，。！；：？]|[…]+)\]",txt)
+		list = re.findall(r"([\w，、\"\"]*)\[([，。！；：？]|[…]+)\]",txt)
 		for l in list:
 			if(len(l[0].strip()) == 0):
 				continue

@@ -1,6 +1,9 @@
 #coding=utf-8
 import numpy as np
+from numpy import *
 import sys
+import os
+import json
 sys.path.append("..")
 from keras.preprocessing import sequence,text
 from keras.models import Sequential
@@ -10,18 +13,25 @@ from keras.layers import LSTM
 from util import one_hot
 from keras.models import model_from_json  
 
-path = "/home/chenzewei/GraduationProject/tmp/"
+root = os.path.abspath("..")
+path = root+"/tmp/"
 fin = open(path+"json.txt")
 json_string = fin.read()
 model = model_from_json(json_string)  
 
-model.load_weights('/home/chenzewei/GraduationProject/weight/weight.h5') 
+f = open(root+"/config.json","r")
+config = json.load(f)
+maxlen = config['length']
+batch_size = config['batch_size']
+wordcnt = config['nb_words']
+f.close()
 
-maxlen = 10 
+model.load_weights(root+'/weight/weight.h5') 
 
-in_test = one_hot.one_hot(path+"predict.txt",n=114120,maxlen=maxlen,split = " ")
+in_test = one_hot.one_hot(path+"test4_seg.txt",n=wordcnt,maxlen=maxlen,split = " ")
 print("[，= 0] [。= 1] [？= 2] [！= 3] ")
-in_test = sequence.pad_sequences(in_test,maxlen=10) 
-predict = model.predict_classes(in_test, batch_size=32, verbose=1)
+in_test = sequence.pad_sequences(in_test,maxlen=maxlen) 
+predict = model.predict_classes(in_test, batch_size=batch_size, verbose=1)
+set_printoptions(threshold='nan')
 print(predict)
 

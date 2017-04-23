@@ -1,8 +1,10 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3
 import re
 import sys
+import os
 
-path = "/home/chenzewei/GraduationProject/tmp/";
+path = os.path.abspath("..")
+path = path+"/tmp/"
 name = "classes_seg"
 file = path+name+".txt"
 if len(sys.argv) >= 2:

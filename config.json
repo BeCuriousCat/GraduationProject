@@ -1,5 +1,7 @@
 {
-	"length":"10",
+	"length":10,
 	"punctuation":["，","。","！","？"],
-	"nb_words":"114120"
+	"nb_words":140000,
+	"max_features":150000,
+	"batch_size":32
 }

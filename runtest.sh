@@ -1,10 +1,10 @@
-rootdir="/home/chenzewei/GraduationProject/corpus/"
-
+rootdir=$PWD"/corpus/"
 a=("test" "test2" "test3" "test4" "test5")
 
 cd ./util
 
 ./getCorpus.py
+echo ${rootdir}${a[0]}
 
 ./getCorpus.py ${rootdir}${a[0]}
 ./getCorpus.py ${rootdir}${a[1]}
@@ -23,3 +23,4 @@ cd ./source
 ./segmentation.py ${a[3]} ../tmp/
 ./segmentation.py ${a[4]} ../tmp/
 cd ../
+

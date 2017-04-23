@@ -1,4 +1,6 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3
+from __future__ import absolute_import 
+from __future__ import print_function
 import jieba
 import sys
 
