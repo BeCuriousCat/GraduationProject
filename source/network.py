@@ -15,7 +15,7 @@ from util import one_hot
 import os
 import json
 
-#需要修改
+#config数据
 root = os.path.abspath("..")
 f = open(root+"/config.json","r")
 config = json.load(f)
@@ -23,6 +23,10 @@ maxlen = config['length']
 max_features =config['max_features']
 batch_size = config['batch_size']
 wordcnt = config['nb_words']
+targer = config['targer']
+flist = config['filelist']
+dropout = config['dropout']
+prd_size = config['predict_size']
 f.close()
 
 path = root+"/tmp/"
@@ -39,8 +43,8 @@ yfile = path+"classesY.txt"
 X_train = one_hot.one_hot(xfile,n=wordcnt,maxlen=maxlen,split = " ")
 y_train = one_hot.replace(yfile)
 
-files = ["test","test2","test3","test4","test5"]
-y_target = ["综合","，","！","。","？"]
+files = flist
+y_target = targer
 x_t = []
 y_t = []
 x_test = []
@@ -68,9 +72,9 @@ print('X_train shape:', X_train.shape)
 
 print('Build model...')
 model = Sequential()
-model.add(Embedding(max_features, 128, dropout=0.3))
-model.add(LSTM(128, dropout_W=0.3, dropout_U=0.3))  # try using a GRU instead, for fun
-model.add(Dense(4))
+model.add(Embedding(max_features, 128, dropout=dropout))
+model.add(LSTM(128, dropout_W=dropout, dropout_U=dropout))  # try using a GRU instead, for fun
+model.add(Dense(prd_size))
 model.add(Activation('softmax'))
 
 # try using different optimizers and different optimizer configs

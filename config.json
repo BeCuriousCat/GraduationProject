@@ -3,5 +3,10 @@
 	"punctuation":["，","。","！","？"],
 	"nb_words":140000,
 	"max_features":150000,
-	"batch_size":32
+	"batch_size":32,
+	"filelist":["test","test2","test3","test4","test5"],
+	"targer":["综合","，","！","。","？","","",""],
+	"dropout":0.3,
+	"predict_size":7
+
 }
