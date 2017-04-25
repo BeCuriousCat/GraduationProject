@@ -13,6 +13,7 @@ from keras.layers import LSTM
 from util import one_hot
 from keras.models import model_from_json  
 
+
 root = os.path.abspath("..")
 path = root+"/tmp/"
 fin = open(path+"json.txt")
