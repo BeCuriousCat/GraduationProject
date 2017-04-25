@@ -3,6 +3,9 @@
 import re
 import jieba
 import os
+import json
+from util import one_hot
+
 
 def getCorpus(txt):	
 	X = []
@@ -30,21 +33,31 @@ from keras.layers import LSTM
 from keras.models import model_from_json  
 
 def predict(list):
-	root = os.path.abspath("..")
-	fin = open(root+"/tmp/json.txt")
-
+	result = []
+	root = os.path.abspath(".")
+	path = root+"/tmp/"
+	fin = open(path+"json.txt")
 	f = open(root+"/config.json","r")
 	config = json.load(f)
 	maxlen = config['length']
 	wordcnt = config['nb_words']
+	puct = config['punctuation']
+	batch_size = config['batch_size']
 	f.close()
+	#分词
+	seglist = segment(list)
 
 	json_string = fin.read()
+	fin.close()
 	model = model_from_json(json_string)
 	model.load_weights(root+'/weight/weight.h5') 
-
-	
-	in_test = sequence.pad_sequences(list,maxlen=maxlen) 
-	predict = model.predict_classes(in_test, batch_size=batch_size, verbose=1)
-	set_printoptions(threshold='nan')
-	print(predict)
+	#one hot encode 
+	onehotlist = one_hot.one_hot4Line(seglist,n=wordcnt,maxlen=maxlen,split=" ")
+	#padding 
+	print(puct)
+	inTxt = sequence.pad_sequences(onehotlist,maxlen=maxlen) 
+	predictNo = model.predict_classes(inTxt, batch_size=batch_size, verbose=1)
+	for i in range(0,len(inTxt)):
+		predict = puct[int(predictNo[i])]
+		result.append(list[i]+"["+predict+"]")
+	return result
