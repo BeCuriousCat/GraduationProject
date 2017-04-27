@@ -1,10 +1,10 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 #coding=utf-8
 
-import tkinter.filedialog
+
 import json
 import os
-from tkinter import * 
+import tkinter 
 from appJar import gui
 from util import predict,one_hot
 

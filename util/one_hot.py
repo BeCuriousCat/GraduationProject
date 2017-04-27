@@ -1,6 +1,7 @@
 #coding=utf-8
 from __future__ import print_function
 import os
+import json
 def one_hot(fName,n,maxlen,split=" "):
 	fin = open(fName,'r')
 	seq = []
@@ -22,6 +23,8 @@ def replace(fName):
 	f = open(root+"/config.json","r")
 	config = json.load(f)
 	a = config['punctuation']
+	for i in range(0,len(a)):
+		a[i] = a[i].encode("utf-8")
 	while line:
 		line = line.strip(' \n')
 		intege = a.index(line)
