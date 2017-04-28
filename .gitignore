@@ -1,4 +1,6 @@
 ./tmp/*.txt
 ./corpus/
 ./weight
+.idea/
+untitled.sublime*
 
