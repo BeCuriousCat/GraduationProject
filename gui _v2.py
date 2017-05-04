@@ -1,15 +1,16 @@
 #!/usr/bin/python
 #coding=utf-8
-
+from __future__ import print_function
 import json
 import os
-import tkinter 
+import Tkinter
+import tkFileDialog
 from appJar import gui
 from util import predict,one_hot
 
 
 def openFile(self):
-	fn=tkinter.filedialog.askopenfilename(title='选择一个文件', filetypes=[('所有文件','.*'),('文本文件','.txt')])
+	fn=tkFileDialog.askopenfilename(title='选择一个文件', filetypes=[('所有文件','.*'),('文本文件','.txt')],)
 	f = open(fn)
 	text = f.read()
 	f.close()
@@ -25,6 +26,7 @@ def run(self):
 	text = app.getTextArea("t1")
 	original = predict.getCorpus(text)
 	#segment,one hot encode should be complete in the predict()
+	print
 	result = predict.predict(original)
 	app.setTextArea("t2",result)
 	

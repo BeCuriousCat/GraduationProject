@@ -1,13 +1,12 @@
 #!/usr/bin/python
 #coding=utf-8
 
-
 import json
 import os
 import tkinter 
 from appJar import gui
-from util import predict,one_hot
-
+from util import predict
+from util import one_hot
 
 
 def openFile(self):

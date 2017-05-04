@@ -1,5 +1,7 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 #coding=utf-8
+from __future__ import print_function
+
 import re
 import jieba
 import os
@@ -7,16 +9,20 @@ import json
 from util import one_hot
 
 
-def getCorpus(txt):	
+def getCorpus(txt):
+	print("get Corpus")
 	X = []
 	list = re.findall(r"([\w，、\"\"]*)\[([，。！；：？]|[…]+)\]",txt)
+	print(list)
 	for l in list:
 		if(len(l[0].strip()) == 0):
-			continue	
+			continue
+		print(l)
 		X.append(str(l[0]))
 	return X
 
 def segment(list):
+	print("segment")
 	X = [] 
 	for i in list:
 		newline = jieba.cut(i,cut_all=False)
@@ -46,15 +52,15 @@ def predict(list):
 	f.close()
 	#分词
 	seglist = segment(list)
-
+	print(seglist)
 	json_string = fin.read()
 	fin.close()
 	model = model_from_json(json_string)
 	model.load_weights(root+'/weight/weight.h5') 
 	#one hot encode 
 	onehotlist = one_hot.one_hot4Line(seglist,n=wordcnt,maxlen=maxlen,split=" ")
-	#padding 
-	print(puct)
+	#padding
+
 	inTxt = sequence.pad_sequences(onehotlist,maxlen=maxlen) 
 	predictNo = model.predict_classes(inTxt, batch_size=batch_size, verbose=1)
 	for i in range(0,len(inTxt)):
