@@ -26,12 +26,12 @@ while line:
 			d[x]  = 1
 			count  += 1
 	line = f.readline()
-	print("count = ",count)
+print("count = ",count)
 
-print("Total words = ",wdn)
-acnt = 0
-for i in d:
-	acnt += d[i]
-print("all_plus = ",acnt)
+#print("Total words = ",wdn)
+#acnt = 0
+#for i in d:
+#	acnt += d[i]
+#print("all_plus = ",acnt)
 
 f.close()

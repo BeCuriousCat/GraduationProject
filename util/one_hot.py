@@ -17,7 +17,7 @@ def replace(fName):
 	fin = open(fName,'r')
 	seq = []
 	line = fin.readline()
-	a = ['，','。','？','！']
+	a = ['，','。','？','！','：','；']
 	while line:
 		line = line.strip(' \n')
 		intege = a.index(line)

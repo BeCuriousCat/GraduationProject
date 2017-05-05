@@ -1,12 +1,12 @@
 {
 	"length":10,
-	"punctuation":["，","。","！","？"],
+	"punctuation":["，","。","！","？","：","；"],
 	"nb_words":140000,
 	"max_features":150000,
 	"batch_size":32,
-	"filelist":["test","test2","test3","test4","test5"],
-	"targer":["综合","，","！","。","？","","",""],
+	"filelist":["zhonghe","douhao","gantanhao","juhao","wenhao","maohao","fenhao"],
+	"targer":["综合","，","！","。","？","：","；"],
 	"dropout":0.3,
-	"predict_size":7
+	"predict_size":6
 
 }
